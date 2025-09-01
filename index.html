@@ -16,7 +16,18 @@
         body {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #334155 40%, #1e293b 60%, #0f172a 80%, #1e293b 100%);
             background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
             position: relative;
+        }
+        
+        /* Mobile background fix */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-size: 100% 100%;
+            }
         }
         
         body::before {
@@ -1137,66 +1148,66 @@
     </div>
 
     <!-- Beta Signup Popup -->
-    <div id="beta-popup-overlay" class="fixed inset-0 popup-overlay hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl max-w-lg w-full border border-teal-500/30 shadow-2xl">
-            <div class="p-6 border-b border-slate-600 flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
-                        <span class="text-lg">🚀</span>
+    <div id="beta-popup-overlay" class="fixed inset-0 popup-overlay hidden z-50 flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl max-w-lg w-full max-h-[95vh] overflow-y-auto border border-teal-500/30 shadow-2xl mx-2 sm:mx-0">
+            <div class="p-4 sm:p-6 border-b border-slate-600 flex justify-between items-center">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
+                        <span class="text-sm sm:text-lg">🚀</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-teal-300">Beta Version testen</h3>
+                    <h3 class="text-lg sm:text-xl font-semibold text-teal-300">Beta Version testen</h3>
                 </div>
-                <button onclick="hideBetaPopup()" class="text-slate-400 hover:text-white">
-                    <i data-lucide="x" class="w-6 h-6"></i>
+                <button onclick="hideBetaPopup()" class="text-slate-400 hover:text-white flex-shrink-0">
+                    <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                 </button>
             </div>
-            <div class="p-6">
-                <div class="text-center mb-6">
-                    <div class="text-4xl mb-4">🎉</div>
-                    <h4 class="text-lg font-semibold mb-3 text-slate-200">Danke für dein Interesse!</h4>
-                    <p class="text-slate-300 mb-4">
+            <div class="p-4 sm:p-6">
+                <div class="text-center mb-4 sm:mb-6">
+                    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🎉</div>
+                    <h4 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-slate-200">Danke für dein Interesse!</h4>
+                    <p class="text-slate-300 mb-3 sm:mb-4 text-sm sm:text-base">
                         Du bist einer der ersten, die buck.it UP ausprobieren möchten. Das freut uns riesig! 
                         Die Beta-Version ist bereits verfügbar und wartet auf dich.
                     </p>
-                    <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-lg p-4 mb-4">
+                    <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
                         <div class="flex items-center space-x-2 mb-2">
-                            <span class="text-lg">✅</span>
-                            <h5 class="font-semibold text-teal-300">Deine Daten sind sicher</h5>
+                            <span class="text-base sm:text-lg">✅</span>
+                            <h5 class="font-semibold text-teal-300 text-sm sm:text-base">Deine Daten sind sicher</h5>
                         </div>
-                        <p class="text-slate-300 text-sm">
+                        <p class="text-slate-300 text-xs sm:text-sm text-left">
                             Alle Listen, Ziele und Nutzerkonten aus der Beta-Version werden automatisch in die 
                             finale App übernommen. Du verlierst nichts!
                         </p>
                     </div>
-                    <p class="text-slate-400 text-sm mb-6">
+                    <p class="text-slate-400 text-xs sm:text-sm mb-4 sm:mb-6">
                         Hinweis: Die Beta-Version läuft noch nicht auf allen Geräten perfekt, aber du kannst bereits 
                         alle Hauptfunktionen testen und uns wertvolles Feedback geben.
                     </p>
                 </div>
                 
-                <div class="space-y-4">
-                    <button onclick="openBetaApp()" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-6 py-3 rounded-lg font-semibold transition-all glow-effect">
+                <div class="space-y-3 sm:space-y-4">
+                    <button onclick="openBetaApp()" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-4 sm:px-6 py-3 rounded-lg font-semibold transition-all glow-effect text-sm sm:text-base">
                         🚀 Beta App öffnen
                     </button>
                     
-                    <div class="border-t border-slate-600 pt-4">
-                        <div class="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 rounded-lg p-4">
+                    <div class="border-t border-slate-600 pt-3 sm:pt-4">
+                        <div class="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 rounded-lg p-3 sm:p-4">
                             <div class="flex items-center space-x-2 mb-2">
-                                <span class="text-lg">💝</span>
-                                <h5 class="font-semibold text-yellow-300">Unterstütze die Entwicklung</h5>
+                                <span class="text-base sm:text-lg">💝</span>
+                                <h5 class="font-semibold text-yellow-300 text-sm sm:text-base">Unterstütze die Entwicklung</h5>
                             </div>
-                            <p class="text-slate-300 text-sm mb-3">
+                            <p class="text-slate-300 text-xs sm:text-sm mb-3">
                                 buck.it UP ist und bleibt kostenlos! Wenn dir die App gefällt und du die Entwicklung 
                                 unterstützen möchtest, freuen wir uns über eine kleine Spende.
                             </p>
-                            <button onclick="openPayPal()" class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-4 py-2 rounded-lg font-medium transition-all text-sm">
+                            <button onclick="openPayPal()" class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all text-xs sm:text-sm">
                                 ☕ Einen Kaffee spendieren
                             </button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-6 text-center">
+                <div class="mt-4 sm:mt-6 text-center">
                     <p class="text-slate-400 text-xs">
                         Deine Unterstützung hilft uns dabei, buck.it UP weiterzuentwickeln und für alle kostenlos zu halten.
                     </p>
@@ -1423,5 +1434,5 @@
         
 
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9782fbf282297178',t:'MTc1NjcxMTAwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978308e586276a85',t:'MTc1NjcxMTUzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
