@@ -13,23 +13,26 @@
             font-family: 'Inter', sans-serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #1e293b 100%);
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #334155 40%, #1e293b 60%, #0f172a 80%, #1e293b 100%);
+            background-attachment: fixed;
             position: relative;
         }
         
-        .gradient-bg::before {
+        body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
             pointer-events: none;
+            z-index: -1;
         }
         
         .glow-effect {
@@ -95,7 +98,7 @@
         }
     </style>
 </head>
-<body class="gradient-bg text-white min-h-screen">
+<body class="text-white min-h-screen">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-teal-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,8 +163,8 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="hover:text-teal-400 transition-colors">Funktionen</a>
                     <a href="#how-it-works" class="hover:text-teal-400 transition-colors">So funktioniert's</a>
-                    <button class="bg-teal-600 hover:bg-teal-700 px-6 py-2 rounded-lg font-medium transition-colors">
-                        Play Store
+                    <button onclick="showBetaSignup()" class="bg-teal-600 hover:bg-teal-700 px-6 py-2 rounded-lg font-medium transition-colors">
+                        Beta testen
                     </button>
                 </div>
                 <button class="md:hidden" onclick="toggleMobileMenu()">
@@ -175,8 +178,8 @@
             <div class="px-4 py-4 space-y-3">
                 <a href="#features" class="block hover:text-teal-400 transition-colors">Funktionen</a>
                 <a href="#how-it-works" class="block hover:text-teal-400 transition-colors">So funktioniert's</a>
-                <button class="w-full bg-teal-600 hover:bg-teal-700 px-6 py-2 rounded-lg font-medium transition-colors">
-                    Play Store
+                <button onclick="showBetaSignup()" class="w-full bg-teal-600 hover:bg-teal-700 px-6 py-2 rounded-lg font-medium transition-colors">
+                    Beta testen
                 </button>
             </div>
         </div>
@@ -252,8 +255,11 @@
                     Erstelle, verfolge und erreiche persönliche und gemeinsame Lebensziele – für Einzelpersonen, Familien und Freundesgruppen.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-teal-600 hover:bg-teal-700 px-8 py-4 rounded-lg font-semibold text-lg glow-effect hover-lift transition-all">
-                        Kostenlos im Play Store
+                    <button onclick="showBetaSignup()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg glow-effect hover-lift transition-all">
+                        🚀 Jetzt Beta testen
+                    </button>
+                    <button class="bg-slate-700 hover:bg-slate-600 px-8 py-4 rounded-lg font-semibold text-lg hover-lift transition-all border border-slate-600">
+                        Bald im Play Store
                     </button>
                 </div>
             </div>
@@ -262,30 +268,364 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div class="hover-lift bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-xl border border-purple-500/30">
                     <div class="text-3xl mb-2">🎯</div>
-                    <div class="text-slate-300 font-semibold">Ziele setzen</div>
-                    <div class="text-slate-400 text-sm">Persönlich & gemeinsam</div>
+                    <div class="text-slate-300 font-semibold">Bucket Lists</div>
+                    <div class="text-slate-400 text-sm">Lebensziele & Träume</div>
                 </div>
                 <div class="hover-lift bg-gradient-to-br from-orange-500/20 to-red-500/20 p-6 rounded-xl border border-orange-500/30">
-                    <div class="text-3xl mb-2">👥</div>
-                    <div class="text-slate-300 font-semibold">Zusammen erleben</div>
-                    <div class="text-slate-400 text-sm">Familie & Freunde</div>
+                    <div class="text-3xl mb-2">🏠</div>
+                    <div class="text-slate-300 font-semibold">Haushaltspläne</div>
+                    <div class="text-slate-400 text-sm">Aufgaben & Termine</div>
                 </div>
                 <div class="hover-lift bg-gradient-to-br from-green-500/20 to-teal-500/20 p-6 rounded-xl border border-green-500/30">
-                    <div class="text-3xl mb-2">✅</div>
-                    <div class="text-slate-300 font-semibold">Fortschritt verfolgen</div>
-                    <div class="text-slate-400 text-sm">Immer im Blick</div>
+                    <div class="text-3xl mb-2">💡</div>
+                    <div class="text-slate-300 font-semibold">Ideensammlung</div>
+                    <div class="text-slate-400 text-sm">Kreative Projekte</div>
                 </div>
                 <div class="hover-lift bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-6 rounded-xl border border-blue-500/30">
                     <div class="text-3xl mb-2">🎉</div>
-                    <div class="text-slate-300 font-semibold">Erfolge feiern</div>
-                    <div class="text-slate-400 text-sm">Gemeinsam jubeln</div>
+                    <div class="text-slate-300 font-semibold">Eventplanung</div>
+                    <div class="text-slate-400 text-sm">Feiern & Feste</div>
+                </div>
+            </div>
+            
+            <!-- Extended Use Cases -->
+            <div class="mt-20">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold mb-4">
+                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                            Unendliche Möglichkeiten
+                        </span>
+                    </h3>
+                    <p class="text-slate-400 max-w-2xl mx-auto">
+                        Von Alltagsaufgaben bis zu großen Träumen – buck.it UP passt sich perfekt deinem Leben an
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Row 1 -->
+                    <div class="group hover-lift bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-8 rounded-2xl border border-emerald-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">🛠️</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-emerald-300 mb-2">Renovierungspläne</h4>
+                            <p class="text-slate-400 text-sm">Umbau-Projekte strukturiert angehen</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group hover-lift bg-gradient-to-br from-pink-500/20 to-rose-500/20 p-8 rounded-2xl border border-pink-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">🎂</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-pink-300 mb-2">Geburtstagsplanung</h4>
+                            <p class="text-slate-400 text-sm">Besondere Anlässe unvergesslich machen</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group hover-lift bg-gradient-to-br from-yellow-500/20 to-orange-500/20 p-8 rounded-2xl border border-yellow-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">🌱</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-yellow-300 mb-2">Gartenprojekte</h4>
+                            <p class="text-slate-400 text-sm">Grüne Träume Schritt für Schritt verwirklichen</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="group hover-lift bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-indigo-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">📚</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-indigo-300 mb-2">Leselisten</h4>
+                            <p class="text-slate-400 text-sm">Bücher-Ziele setzen und erreichen</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group hover-lift bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-8 rounded-2xl border border-cyan-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">✈️</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-cyan-300 mb-2">Reiseplanung</h4>
+                            <p class="text-slate-400 text-sm">Abenteuer organisieren und erleben</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group hover-lift bg-gradient-to-br from-red-500/20 to-pink-500/20 p-8 rounded-2xl border border-red-500/30 backdrop-blur-sm">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <span class="text-3xl">🎯</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-red-300 mb-2">Fitness-Ziele</h4>
+                            <p class="text-slate-400 text-sm">Gesundheit systematisch verbessern</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Use Cases in smaller cards -->
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="group hover-lift bg-gradient-to-br from-violet-500/15 to-purple-500/15 p-4 rounded-xl border border-violet-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🎨</div>
+                        <div class="text-slate-300 text-sm font-medium">Kreativprojekte</div>
+                    </div>
+                    <div class="group hover-lift bg-gradient-to-br from-green-500/15 to-emerald-500/15 p-4 rounded-xl border border-green-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🍳</div>
+                        <div class="text-slate-300 text-sm font-medium">Kochziele</div>
+                    </div>
+                    <div class="group hover-lift bg-gradient-to-br from-blue-500/15 to-cyan-500/15 p-4 rounded-xl border border-blue-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🎵</div>
+                        <div class="text-slate-300 text-sm font-medium">Musikprojekte</div>
+                    </div>
+                    <div class="group hover-lift bg-gradient-to-br from-orange-500/15 to-red-500/15 p-4 rounded-xl border border-orange-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🏆</div>
+                        <div class="text-slate-300 text-sm font-medium">Karriereziele</div>
+                    </div>
+                    <div class="group hover-lift bg-gradient-to-br from-teal-500/15 to-green-500/15 p-4 rounded-xl border border-teal-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🧘</div>
+                        <div class="text-slate-300 text-sm font-medium">Wellness</div>
+                    </div>
+                    <div class="group hover-lift bg-gradient-to-br from-pink-500/15 to-rose-500/15 p-4 rounded-xl border border-pink-500/25 text-center">
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">💝</div>
+                        <div class="text-slate-300 text-sm font-medium">Beziehungsziele</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Story Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="text-5xl mb-6">💡</div>
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        Die Geschichte hinter buck.it UP
+                    </span>
+                </h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    Warum diese App entstanden ist und warum sie kostenlos bleibt
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Story Content -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-indigo-800/40 to-purple-800/20 backdrop-blur-sm p-8 rounded-2xl border border-indigo-500/30">
+                        <div class="flex items-start space-x-4 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-indigo-300 mb-2">Eine persönliche Mission</h3>
+                                <p class="text-slate-300 leading-relaxed">
+                                    Als ich Ehemann und Vater wurde, merkte ich, wie meine großen Träume langsam in den Hintergrund rückten. 
+                                    Die <strong>Fahrt ans Nordkapp</strong>, das <strong>Beobachten von Polarlichtern</strong>, eine 
+                                    <strong>Campertour durch Norwegen</strong> – all diese Ziele gerieten aus dem Blick.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-800/40 to-pink-800/20 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/30">
+                        <div class="flex items-start space-x-4 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-purple-300 mb-2">Gemeinsam stärker</h3>
+                                <p class="text-slate-300 leading-relaxed">
+                                    Meiner Frau ging es genauso. Da entstand die Idee: Was wäre, wenn wir unsere 
+                                    <strong>Bucket Lists gemeinsam planen</strong> könnten? Mit Freunden, dem Partner, der Familie – 
+                                    zusammen macht alles mehr Spaß und wird eher Realität.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-teal-800/40 to-cyan-800/20 backdrop-blur-sm p-8 rounded-2xl border border-teal-500/30">
+                        <div class="flex items-start space-x-4 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="gift" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-teal-300 mb-2">Kostenlos für alle</h3>
+                                <p class="text-slate-300 leading-relaxed">
+                                    Deshalb ist buck.it UP <strong>komplett kostenlos und werbefrei</strong>. Jeder soll die Chance haben, 
+                                    seine Träume festzuhalten – auch wenn sie nicht alle verwirklicht werden können. 
+                                    Wichtig ist, dass sie nicht vergessen werden.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Elements -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-sm p-8 rounded-2xl border border-slate-600/30">
+                        <div class="text-center mb-8">
+                            <h4 class="text-2xl font-bold text-slate-200 mb-4">Träume, die uns inspiriert haben</h4>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- Travel Dreams -->
+                            <div class="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-lg border border-blue-500/30 p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="text-2xl">✈️</div>
+                                    <h5 class="font-semibold text-blue-300">Reise-Träume</h5>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🏔️</span>
+                                        <span class="text-slate-300">Fahrt ans Nordkapp</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🌌</span>
+                                        <span class="text-slate-300">Polarlichter beobachten</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🚐</span>
+                                        <span class="text-slate-300">Campertour durch Norwegen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Family Dreams -->
+                            <div class="bg-gradient-to-r from-pink-900/20 to-rose-900/20 rounded-lg border border-pink-500/30 p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="text-2xl">👨‍👩‍👧‍👦</div>
+                                    <h5 class="font-semibold text-pink-300">Familien-Ziele</h5>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🏠</span>
+                                        <span class="text-slate-300">Traumhaus mit Garten</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🎂</span>
+                                        <span class="text-slate-300">Unvergessliche Kindergeburtstage</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">📚</span>
+                                        <span class="text-slate-300">Gemeinsam 100 Bücher lesen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Personal Growth -->
+                            <div class="bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-lg border border-purple-500/30 p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="text-2xl">🌱</div>
+                                    <h5 class="font-semibold text-purple-300">Persönliche Entwicklung</h5>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🎸</span>
+                                        <span class="text-slate-300">Gitarre spielen lernen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🏃‍♂️</span>
+                                        <span class="text-slate-300">Marathon laufen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🎨</span>
+                                        <span class="text-slate-300">Eigenes Kunstwerk schaffen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adventure Dreams -->
+                            <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 rounded-lg border border-orange-500/30 p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="text-2xl">🎯</div>
+                                    <h5 class="font-semibold text-orange-300">Abenteuer & Herausforderungen</h5>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🪂</span>
+                                        <span class="text-slate-300">Fallschirmspringen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🏔️</span>
+                                        <span class="text-slate-300">Einen Berg besteigen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🌊</span>
+                                        <span class="text-slate-300">Tauchen lernen</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Creative Dreams -->
+                            <div class="bg-gradient-to-r from-teal-900/20 to-green-900/20 rounded-lg border border-teal-500/30 p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="text-2xl">💡</div>
+                                    <h5 class="font-semibold text-teal-300">Kreative Projekte</h5>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">📖</span>
+                                        <span class="text-slate-300">Ein Buch schreiben</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🎬</span>
+                                        <span class="text-slate-300">Kurzen Film drehen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-lg">🌱</span>
+                                        <span class="text-slate-300">Eigenen Garten anlegen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <div class="inline-flex items-center space-x-2 text-slate-400">
+                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                                <span class="text-sm">Aus verlorenen Träumen wurde eine App für alle</span>
+                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating elements -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse-slow"></div>
+                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
+                </div>
+            </div>
+            
+            <!-- Mission Statement -->
+            <div class="mt-16 text-center">
+                <div class="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-sm p-8 rounded-2xl border border-slate-600/30 max-w-4xl mx-auto">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold mb-4">Unsere Mission</h3>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        <strong>buck.it UP</strong> soll Menschen dabei helfen, ihre <strong>Lebensziele nicht aus den Augen zu verlieren</strong>. 
+                        Ob als Familie, mit Freunden oder allein – gemeinsam geplante Abenteuer werden eher Realität. 
+                        Deshalb bleibt unsere App für immer <strong>kostenlos und werbefrei</strong>, damit jeder seine Träume festhalten kann.
+                    </p>
+                    
+                    <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+                        <span class="bg-gradient-to-r from-teal-500/20 to-cyan-500/20 px-4 py-2 rounded-full border border-teal-500/30 text-teal-300">
+                            ✨ Für immer kostenlos
+                        </span>
+                        <span class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-4 py-2 rounded-full border border-purple-500/30 text-purple-300">
+                            🚫 Keine Werbung
+                        </span>
+                        <span class="bg-gradient-to-r from-orange-500/20 to-red-500/20 px-4 py-2 rounded-full border border-orange-500/30 text-orange-300">
+                            ❤️ Aus Leidenschaft entwickelt
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/15">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Alles was du brauchst</h2>
@@ -395,7 +735,7 @@
     </section>
 
     <!-- How it Works -->
-    <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800/50 via-slate-700/30 to-slate-800/50">
+    <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-700/25">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">So einfach geht's</h2>
@@ -438,153 +778,8 @@
         </div>
     </section>
 
-    <!-- Developer Story Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-900/30 via-slate-800/50 to-purple-900/30">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <div class="text-5xl mb-6">💡</div>
-                <h2 class="text-4xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        Die Geschichte hinter buck.it UP
-                    </span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                    Warum diese App entstanden ist und warum sie kostenlos bleibt
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Story Content -->
-                <div class="space-y-6">
-                    <div class="bg-gradient-to-br from-indigo-800/40 to-purple-800/20 backdrop-blur-sm p-8 rounded-2xl border border-indigo-500/30">
-                        <div class="flex items-start space-x-4 mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="heart" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-indigo-300 mb-2">Eine persönliche Mission</h3>
-                                <p class="text-slate-300 leading-relaxed">
-                                    Als ich Ehemann und Vater wurde, merkte ich, wie meine großen Träume langsam in den Hintergrund rückten. 
-                                    Die <strong>Fahrt ans Nordkapp</strong>, das <strong>Beobachten von Polarlichtern</strong>, eine 
-                                    <strong>Campertour durch Norwegen</strong> – all diese Ziele gerieten aus dem Blick.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-purple-800/40 to-pink-800/20 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/30">
-                        <div class="flex items-start space-x-4 mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-purple-300 mb-2">Gemeinsam stärker</h3>
-                                <p class="text-slate-300 leading-relaxed">
-                                    Meiner Frau ging es genauso. Da entstand die Idee: Was wäre, wenn wir unsere 
-                                    <strong>Bucket Lists gemeinsam planen</strong> könnten? Mit Freunden, dem Partner, der Familie – 
-                                    zusammen macht alles mehr Spaß und wird eher Realität.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-teal-800/40 to-cyan-800/20 backdrop-blur-sm p-8 rounded-2xl border border-teal-500/30">
-                        <div class="flex items-start space-x-4 mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="gift" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-teal-300 mb-2">Kostenlos für alle</h3>
-                                <p class="text-slate-300 leading-relaxed">
-                                    Deshalb ist buck.it UP <strong>komplett kostenlos und werbefrei</strong>. Jeder soll die Chance haben, 
-                                    seine Träume festzuhalten – auch wenn sie nicht alle verwirklicht werden können. 
-                                    Wichtig ist, dass sie nicht vergessen werden.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Visual Elements -->
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-sm p-8 rounded-2xl border border-slate-600/30">
-                        <div class="text-center mb-8">
-                            <h4 class="text-2xl font-bold text-slate-200 mb-4">Träume, die uns inspiriert haben</h4>
-                        </div>
-                        
-                        <div class="space-y-6">
-                            <!-- Dream 1 -->
-                            <div class="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-lg border border-blue-500/20">
-                                <div class="text-3xl">🏔️</div>
-                                <div>
-                                    <h5 class="font-semibold text-blue-300">Fahrt ans Nordkapp</h5>
-                                    <p class="text-slate-400 text-sm">Der nördlichste Punkt Europas erleben</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Dream 2 -->
-                            <div class="flex items-center space-x-4 p-4 bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-lg border border-green-500/20">
-                                <div class="text-3xl">🌌</div>
-                                <div>
-                                    <h5 class="font-semibold text-green-300">Polarlichter beobachten</h5>
-                                    <p class="text-slate-400 text-sm">Die Aurora Borealis in ihrer ganzen Pracht</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Dream 3 -->
-                            <div class="flex items-center space-x-4 p-4 bg-gradient-to-r from-orange-900/30 to-red-900/30 rounded-lg border border-orange-500/20">
-                                <div class="text-3xl">🚐</div>
-                                <div>
-                                    <h5 class="font-semibold text-orange-300">Campertour durch Norwegen</h5>
-                                    <p class="text-slate-400 text-sm">Freiheit auf vier Rädern durch Fjorde</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8 text-center">
-                            <div class="inline-flex items-center space-x-2 text-slate-400">
-                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                                <span class="text-sm">Aus verlorenen Träumen wurde eine App für alle</span>
-                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating elements -->
-                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse-slow"></div>
-                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
-                </div>
-            </div>
-            
-            <!-- Mission Statement -->
-            <div class="mt-16 text-center">
-                <div class="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-sm p-8 rounded-2xl border border-slate-600/30 max-w-4xl mx-auto">
-                    <div class="text-4xl mb-4">🎯</div>
-                    <h3 class="text-2xl font-bold mb-4">Unsere Mission</h3>
-                    <p class="text-lg text-slate-300 leading-relaxed">
-                        <strong>buck.it UP</strong> soll Menschen dabei helfen, ihre <strong>Lebensziele nicht aus den Augen zu verlieren</strong>. 
-                        Ob als Familie, mit Freunden oder allein – gemeinsam geplante Abenteuer werden eher Realität. 
-                        Deshalb bleibt unsere App für immer <strong>kostenlos und werbefrei</strong>, damit jeder seine Träume festhalten kann.
-                    </p>
-                    
-                    <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-                        <span class="bg-gradient-to-r from-teal-500/20 to-cyan-500/20 px-4 py-2 rounded-full border border-teal-500/30 text-teal-300">
-                            ✨ Für immer kostenlos
-                        </span>
-                        <span class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-4 py-2 rounded-full border border-purple-500/30 text-purple-300">
-                            🚫 Keine Werbung
-                        </span>
-                        <span class="bg-gradient-to-r from-orange-500/20 to-red-500/20 px-4 py-2 rounded-full border border-orange-500/30 text-orange-300">
-                            ❤️ Aus Leidenschaft entwickelt
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Transition Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800/30 via-teal-900/20 to-slate-800/30">
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/10">
         <div class="max-w-4xl mx-auto text-center">
             <div class="animate-float mb-8">
                 <div class="text-6xl">🚀</div>
@@ -594,7 +789,7 @@
     </section>
 
     <!-- Development Status Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900/20 via-slate-800/40 to-teal-900/20">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <div class="text-5xl mb-4">🚧</div>
@@ -744,7 +939,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-6">
                 <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
@@ -755,9 +950,64 @@
                 Starte noch heute und verwirkliche deine Träume gemeinsam mit anderen.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg glow-effect hover-lift transition-all">
-                    Bald im Play Store verfügbar
+                <button onclick="showBetaSignup()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg glow-effect hover-lift transition-all">
+                    🚀 Jetzt Beta Version testen
                 </button>
+                <button class="bg-slate-700 hover:bg-slate-600 px-8 py-4 rounded-lg font-semibold text-lg hover-lift transition-all border border-slate-600">
+                    Bald im Play Store
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-orange-900/15">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-sm p-8 rounded-2xl border border-yellow-500/30">
+                <div class="text-center">
+                    <div class="text-5xl mb-6">☕</div>
+                    <h2 class="text-3xl font-bold mb-4">
+                        <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
+                            Unterstütze die Entwicklung
+                        </span>
+                    </h2>
+                    <p class="text-xl text-slate-300 mb-6 max-w-2xl mx-auto">
+                        buck.it UP ist und bleibt <strong>komplett kostenlos</strong>. Wenn dir die App gefällt, 
+                        freuen wir uns über deine Unterstützung bei der Weiterentwicklung.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-6 rounded-xl border border-green-500/30">
+                            <div class="text-3xl mb-3">🚀</div>
+                            <h4 class="font-semibold text-green-300 mb-2">Neue Features</h4>
+                            <p class="text-slate-400 text-sm">Deine Spende hilft uns, neue Funktionen zu entwickeln</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-6 rounded-xl border border-blue-500/30">
+                            <div class="text-3xl mb-3">⚡</div>
+                            <h4 class="font-semibold text-blue-300 mb-2">Bessere Performance</h4>
+                            <p class="text-slate-400 text-sm">Investition in Server und Infrastruktur</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-xl border border-purple-500/30">
+                            <div class="text-3xl mb-3">❤️</div>
+                            <h4 class="font-semibold text-purple-300 mb-2">Kostenlos für alle</h4>
+                            <p class="text-slate-400 text-sm">Damit buck.it UP für jeden zugänglich bleibt</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="openPayPal()" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-8 py-4 rounded-lg font-semibold text-lg hover-lift transition-all text-slate-900">
+                            ☕ Einen Kaffee spendieren
+                        </button>
+                        <button onclick="showBetaSignup()" class="bg-slate-700 hover:bg-slate-600 px-8 py-4 rounded-lg font-semibold text-lg hover-lift transition-all border border-slate-600">
+                            Erstmal testen
+                        </button>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm mt-6">
+                        Jeder Beitrag hilft uns dabei, buck.it UP weiterzuentwickeln und für alle kostenlos zu halten. 
+                        <strong>Danke für deine Unterstützung!</strong> 🙏
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -844,19 +1094,15 @@
                     <h4 class="font-semibold mb-4">Produkt</h4>
                     <ul class="space-y-2 text-slate-400">
                         <li><a href="#features" class="hover:text-teal-400 transition-colors">Funktionen</a></li>
-                        <li><a href="#pricing" class="hover:text-teal-400 transition-colors">Preise</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Updates</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Roadmap</a></li>
+                        <li><a href="#how-it-works" class="hover:text-teal-400 transition-colors">So funktioniert's</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
+                    <h4 class="font-semibold mb-4">App</h4>
                     <ul class="space-y-2 text-slate-400">
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Hilfe-Center</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Kontakt</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Community</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Status</a></li>
+                        <li><button onclick="showBetaSignup()" class="hover:text-teal-400 transition-colors text-left">Beta testen</button></li>
+                        <li><button onclick="openPayPal()" class="hover:text-teal-400 transition-colors text-left">Unterstützen</button></li>
                     </ul>
                 </div>
                 
@@ -866,13 +1112,13 @@
                         <li><a href="#" onclick="showPopup('privacy')" class="hover:text-teal-400 transition-colors cursor-pointer">Datenschutz</a></li>
                         <li><a href="#" onclick="showPopup('terms')" class="hover:text-teal-400 transition-colors cursor-pointer">AGB</a></li>
                         <li><a href="#" onclick="showPopup('imprint')" class="hover:text-teal-400 transition-colors cursor-pointer">Impressum</a></li>
-                        <li><a href="#" class="hover:text-teal-400 transition-colors">Cookies</a></li>
+                        <li><a href="#" onclick="showPopup('cookies')" class="hover:text-teal-400 transition-colors cursor-pointer">Cookies</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-                <p>&copy; 2024 buck.it UP. Alle Rechte vorbehalten. Version 1.0</p>
+                <p>&copy; 2025 buck.it UP. Alle Rechte vorbehalten. Version 1.0</p>
             </div>
         </div>
     </footer>
@@ -887,6 +1133,75 @@
                 </button>
             </div>
             <div id="popup-content" class="p-6 text-slate-300"></div>
+        </div>
+    </div>
+
+    <!-- Beta Signup Popup -->
+    <div id="beta-popup-overlay" class="fixed inset-0 popup-overlay hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl max-w-lg w-full border border-teal-500/30 shadow-2xl">
+            <div class="p-6 border-b border-slate-600 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
+                        <span class="text-lg">🚀</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-teal-300">Beta Version testen</h3>
+                </div>
+                <button onclick="hideBetaPopup()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-4">🎉</div>
+                    <h4 class="text-lg font-semibold mb-3 text-slate-200">Danke für dein Interesse!</h4>
+                    <p class="text-slate-300 mb-4">
+                        Du bist einer der ersten, die buck.it UP ausprobieren möchten. Das freut uns riesig! 
+                        Die Beta-Version ist bereits verfügbar und wartet auf dich.
+                    </p>
+                    <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-lg p-4 mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-lg">✅</span>
+                            <h5 class="font-semibold text-teal-300">Deine Daten sind sicher</h5>
+                        </div>
+                        <p class="text-slate-300 text-sm">
+                            Alle Listen, Ziele und Nutzerkonten aus der Beta-Version werden automatisch in die 
+                            finale App übernommen. Du verlierst nichts!
+                        </p>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-6">
+                        Hinweis: Die Beta-Version läuft noch nicht auf allen Geräten perfekt, aber du kannst bereits 
+                        alle Hauptfunktionen testen und uns wertvolles Feedback geben.
+                    </p>
+                </div>
+                
+                <div class="space-y-4">
+                    <button onclick="openBetaApp()" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 px-6 py-3 rounded-lg font-semibold transition-all glow-effect">
+                        🚀 Beta App öffnen
+                    </button>
+                    
+                    <div class="border-t border-slate-600 pt-4">
+                        <div class="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-lg">💝</span>
+                                <h5 class="font-semibold text-yellow-300">Unterstütze die Entwicklung</h5>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3">
+                                buck.it UP ist und bleibt kostenlos! Wenn dir die App gefällt und du die Entwicklung 
+                                unterstützen möchtest, freuen wir uns über eine kleine Spende.
+                            </p>
+                            <button onclick="openPayPal()" class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 px-4 py-2 rounded-lg font-medium transition-all text-sm">
+                                ☕ Einen Kaffee spendieren
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-slate-400 text-xs">
+                        Deine Unterstützung hilft uns dabei, buck.it UP weiterzuentwickeln und für alle kostenlos zu halten.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -971,6 +1286,66 @@
                             USt-IdNr.: DE123456789
                         </p>
                     `
+                },
+                cookies: {
+                    title: 'Cookie-Informationen',
+                    content: `
+                        <h4 class="font-semibold mb-3">Cookie-Nutzung bei buck.it UP</h4>
+                        
+                        <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-lg">🍪</span>
+                                <h5 class="font-semibold text-green-300">Gute Nachrichten!</h5>
+                            </div>
+                            <p class="text-slate-300 text-sm">
+                                Diese Webseite verwendet <strong>keine Cookies</strong> und sammelt <strong>keine persönlichen Daten</strong>.
+                            </p>
+                        </div>
+                        
+                        <h5 class="font-semibold mb-2">Was bedeutet das für Sie?</h5>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Keine Tracking-Cookies oder Werbecookies</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Keine Analyse-Tools wie Google Analytics</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Keine Speicherung Ihrer Browserdaten</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Keine Weitergabe von Daten an Dritte</span>
+                            </li>
+                        </ul>
+                        
+                        <h5 class="font-semibold mb-2">Externe Dienste</h5>
+                        <p class="mb-4">
+                            Diese Webseite nutzt <strong>Tailwind CSS</strong> und <strong>Lucide Icons</strong> über CDN. 
+                            Diese Dienste können technische Daten (wie IP-Adresse) für die Bereitstellung der Inhalte verarbeiten, 
+                            setzen aber keine Tracking-Cookies.
+                        </p>
+                        
+                        <h5 class="font-semibold mb-2">Die buck.it UP App</h5>
+                        <p class="mb-4">
+                            Auch unsere geplante App wird <strong>keine Cookies verwenden</strong> und nur die minimal 
+                            notwendigen Daten (E-Mail, Spitzname, Ihre Listen) speichern. Wir glauben an Datenschutz durch Design.
+                        </p>
+                        
+                        <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-lg">🛡️</span>
+                                <h5 class="font-semibold text-blue-300">Unser Versprechen</h5>
+                            </div>
+                            <p class="text-slate-300 text-sm">
+                                buck.it UP wird auch in Zukunft <strong>werbefrei</strong> und <strong>datenschutzfreundlich</strong> bleiben. 
+                                Ihre Privatsphäre ist uns wichtiger als Werbeeinnahmen.
+                            </p>
+                        </div>
+                    `
                 }
             };
             
@@ -991,6 +1366,34 @@
         document.getElementById('popup-overlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 hidePopup();
+            }
+        });
+        
+        // Beta signup functions
+        function showBetaSignup() {
+            const overlay = document.getElementById('beta-popup-overlay');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideBetaPopup() {
+            const overlay = document.getElementById('beta-popup-overlay');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openBetaApp() {
+            window.open('https://goodkatcreative-buck-61d8.bolt.host/', '_blank');
+        }
+        
+        function openPayPal() {
+            window.open('https://www.paypal.com/paypalme/gscoffeee?country.x=DE&locale.x=de_DE', '_blank');
+        }
+        
+        // Close beta popup when clicking outside
+        document.getElementById('beta-popup-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideBetaPopup();
             }
         });
         
@@ -1020,6 +1423,5 @@
         
 
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976e02de175cf968',t:'MTc1NjQ5MTA4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9782fbf282297178',t:'MTc1NjcxMTAwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
