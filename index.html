@@ -122,7 +122,7 @@
         </defs>
     </svg>
 </head>
-<body class="text-white bg-slate-900">
+<body class="text-white">
     <!-- Header -->
     <header class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -188,11 +188,16 @@
             </div>
         </div>
         
-       
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block" style="animation-duration: 4s;">
+            <div class="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-slate-400 rounded-full mt-2 animate-pulse" style="animation-duration: 3s;"></div>
+            </div>
+        </div>
     </section>
 
     <!-- Section 1 - Was ist buck.it UP? -->
-    <section class="py-16 px-4 sm:px-6 bg-slate-900">
+    <section class="py-16 px-4 sm:px-6 bg-slate-800/20">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8">Was ist buck.it UP?</h2>
             <p class="text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
@@ -207,7 +212,7 @@
             <h2 class="text-3xl font-bold text-center mb-12">Warum lohnt es sich?</h2>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-slate-900 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50 hover:border-teal-500/30 transition-colors">
+                <div class="bg-slate-800/40 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50 hover:border-teal-500/30 transition-colors">
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center">
                             <i data-lucide="target" class="w-6 h-6 text-teal-400"></i>
@@ -297,78 +302,83 @@
         </div>
     </section>
 
-<!-- Section 4 - App Preview -->
-<section class="py-16 px-4 sm:px-6 bg-slate-900/20">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">So sieht buck.it UP aus</h2>
+    <!-- Section 4 - App Preview -->
+    <section class="py-16 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">So sieht buck.it UP aus</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Screenshot 1 -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <!-- Smartphone Frame -->
+                        <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
+                            <!-- Phone Body -->
+                            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <!-- Screen -->
+                            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
+                            <!-- Top Speaker -->
+                            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
+                            <!-- Home Indicator -->
+                            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
+                        </svg>
 
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
-      <!-- Screenshot 1 -->
-      <div class="flex justify-center">
-        <div class="relative">
-          <!-- Smartphone Frame -->
-          <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
-            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
-            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
-            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
-          </svg>
+                        <!-- Screen Content (Image) -->
+                        <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
+                            <img src="assets/Lobby.png" alt="App Screenshot Lobby" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';" />
+                        </div>
 
-          <!-- Screen Content -->
-          <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
-            <img src="assets/Lobby.png" alt="App Screenshot Lobby" loading="lazy" class="w-full h-full object-cover" />
-          </div>
+                        <!-- Caption -->
+                        <div class="text-center mt-6">
+                            <p class="text-slate-400 text-sm">Lobby / Übersicht</p>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Caption -->
-          <div class="text-center mt-6">
-            <p class="text-slate-400 text-sm">Lobby / Übersicht</p>
-          </div>
+                <!-- Screenshot 2 -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <!-- Smartphone Frame -->
+                        <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
+                            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
+                            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
+                            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
+                        </svg>
+
+                        <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
+                            <img src="assets/Inspiration.png" alt="App Screenshot Inspiration" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';" />
+                        </div>
+
+                        <div class="text-center mt-6">
+                            <p class="text-slate-400 text-sm">Inspiration & Ideen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screenshot 3 -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <!-- Smartphone Frame -->
+                        <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
+                            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
+                            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
+                            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
+                        </svg>
+
+                        <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
+                            <img src="assets/Ziel%20erreicht.png" alt="App Screenshot Ziel erreicht" class="w-full h-full object-cover" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';" />
+                        </div>
+
+                        <div class="text-center mt-6">
+                            <p class="text-slate-400 text-sm">Ziel erreicht 🎯</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Screenshot 2 -->
-      <div class="flex justify-center">
-        <div class="relative">
-          <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
-            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
-            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
-            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
-          </svg>
-
-          <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
-            <img src="assets/Inspiration.png" alt="App Screenshot Inspiration" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-
-          <div class="text-center mt-6">
-            <p class="text-slate-400 text-sm">Inspiration & Ideen</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screenshot 3 -->
-      <div class="flex justify-center">
-        <div class="relative">
-          <svg width="280" height="560" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-2xl">
-            <rect x="10" y="10" width="260" height="540" rx="35" ry="35" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-            <rect x="25" y="60" width="230" height="440" rx="20" ry="20" fill="#0f172a"/>
-            <rect x="110" y="25" width="60" height="6" rx="3" fill="#64748b"/>
-            <rect x="120" y="520" width="40" height="4" rx="2" fill="#64748b"/>
-          </svg>
-
-          <div class="absolute top-[60px] left-[25px] w-[230px] h-[440px] rounded-[20px] overflow-hidden">
-            <img src="assets/Ziel%20erreicht.png" alt="App Screenshot Ziel erreicht" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-
-          <div class="text-center mt-6">
-            <p class="text-slate-400 text-sm">Ziel erreicht 🎯</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Section 5 - Unterstützen -->
     <section class="py-16 px-4 sm:px-6 bg-slate-800/20">
@@ -536,5 +546,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978b163454a964e2',t:'MTc1Njc5NTk2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978b438f35eb64e2',t:'MTc1Njc5NzgyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
